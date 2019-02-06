@@ -58,9 +58,9 @@ for index, row in data.iterrows():
     ss = sid.polarity_scores(row["Tweets"])
     l.append(ss)
     k = ss['compound']
-    if k >= 0.5:
+    if k >= 0.05:
         counter['positive'] += 1
-    elif k <= -0.5:
+    elif k <= -0.05:
         counter['negative'] += 1
     else:
         counter['neutral'] += 1
