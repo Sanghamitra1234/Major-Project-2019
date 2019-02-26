@@ -16,7 +16,6 @@ import secret
 auth = tweepy.OAuthHandler(secret.consumer_key, secret.consumer_secret)
 auth.set_access_token(secret.access_token, secret.access_token_secret)
 api = tweepy.API(auth)
-
 # Error handling
 if (not api):
     print("Problem Connecting to API")
@@ -32,7 +31,7 @@ places = api.geo_search(query=location)
 print(places[0].id)
 
 # search tweets with some keywords
-results = api.search('hash_tag',
+results = api.search(hash_tag,
                      count=number,
                      tweet_mode='extended',
                      lang='en',
@@ -41,6 +40,7 @@ results = api.search('hash_tag',
 
 tweets = results
 data = pd.DataFrame(data=[tweet.full_text for tweet in tweets], columns=['Tweets'])
+data.to_csv('output.csv')
 
 # print the first 10 data
 print(data.head(10))
