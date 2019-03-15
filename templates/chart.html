@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Chart</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+  <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+
+<body>
+	<div class="chart">
+    	<canvas id="chart" width="400" height="400"></canvas>
+    	<script>
+      var pieData = [
+        {% for item, label, colors in set %}
+          {
+            value: {{item}},
+            label: "{{label}}",
+            color : "{{colors}}"
+          },
+        {% endfor %}
+      ];
+      // get bar chart canvas
+      var mychart = document.getElementById("chart").getContext("2d");
+      steps = 10
+      max = 18000
+      // draw pie chart
+      new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+    	</script>
+    	<br/>
+    	<div class="center">
+    		<h5 class="text-type">
+    			<span class="positive"></span>
+    			Positive
+    			<span class="negative"></span>
+    			Negative
+    			<span class="neutral"></span>
+    			Neutral
+    		</h5>
+    	</div>
+    </div>
+</body>
+</html>
