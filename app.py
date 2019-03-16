@@ -4,6 +4,9 @@ from flask import Markup
 import os
 
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = 'reds209ndsldssdsljdsldsdsljdsldksdksdsdfsfsfsfis'
+session.init_app(app)
 
 positive = 0
 negative = 0
