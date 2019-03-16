@@ -5,6 +5,8 @@ Election Prediction using Twitter Sentiment Analysis.
 ## About:
 In this project we can search tweets and set the max tweet to nearly 5000 (as we tried to implement twitter api, by increasing their tweets, which was not present directly in their API). Then it will show the positive, negative and neutral percentage.
 In case the no. of tweets given as input is not available for the query given, it will show error.
+But while running in local system, the max twet can be nearly about 1 Lakh. 
+Due to server overloading, it was not possible to increase the count there.
 ## Getting Started:
 To run this in your local server, you need to
 1. install python3.7 (recent version).
@@ -14,5 +16,5 @@ To run this in your local server, you need to
 (https://devcenter.heroku.com/)
 ## Caution :
 In place of secret.py, use your own twitter developer, token access. 
-# Project Final Link
+## Project Final Link
 https://election-predictions.herokuapp.com/
