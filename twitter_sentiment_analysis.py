@@ -17,7 +17,7 @@ import secret
 auth = tweepy.OAuthHandler(secret.consumer_key, secret.consumer_secret)
 auth.set_access_token(secret.access_token, secret.access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True,
-				   wait_on_rate_limit_notify=True)
+                 wait_on_rate_limit_notify=True)
 # Error handling
 if (not api):
     print("Problem Connecting to API")
@@ -51,42 +51,42 @@ fw = open(outputFile, 'wb')
 tweetCount = 0
 print("Downloading max {0} tweets".format(number))
 while tweetCount < number:
-	try:
-		if (max_id <= 0):
-			if (not sinceId):
-				new_tweets = api.search(q=hash_tag, count=tweetsPerQry, tweet_mode='extended', lang='en')
-				tweetCount += len(new_tweets)
-				print("Downloaded {0} tweets".format(tweetCount))
-			else:
-				new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
-					since_id=sinceId, tweet_mode='extended', lang='en')
-				print("here 2")
-		else:
-			if (not sinceId):
-				new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
-					max_id=str(max_id - 1), tweet_mode='extended', lang='en')
-				print("here 3")
-			else:
-				new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
-					max_id=str(max_id - 1),
-					since_id=sinceId, tweet_mode='extended', lang='en')
-				print("here 4")
-			if not new_tweets:
-				print("No more tweets found")
-				break
+    try:
+        if (max_id <= 0):
+            if (not sinceId):
+                new_tweets = api.search(q=hash_tag, count=tweetsPerQry, tweet_mode='extended', lang='en')
+                tweetCount += len(new_tweets)
+                print("Downloaded {0} tweets".format(tweetCount))
+            else:
+                new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
+                                        since_id=sinceId, tweet_mode='extended', lang='en')
+                print("here 2")
+        else:
+            if (not sinceId):
+                new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
+                                        max_id=str(max_id - 1), tweet_mode='extended', lang='en')
+                print("here 3")
+            else:
+                new_tweets = api.search(q=hash_tag, count=tweetsPerQry,
+                                        max_id=str(max_id - 1),
+                                        since_id=sinceId, tweet_mode='extended', lang='en')
+                print("here 4")
+            if not new_tweets:
+                print("No more tweets found")
+                break
 
-		#print(new_tweets)
+        # print(new_tweets)
 
-		tweets = new_tweets
-		for tweet in tweets:
-			dataset.append(tweet.full_text)
-		#data += pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])
-		tweetCount += len(new_tweets)
-		print("Downloaded {0} tweets".format(tweetCount))
-		max_id = new_tweets[-1].id
-	except tweepy.TweepError as e:
-		print(str(e))
-		break
+        tweets = new_tweets
+        for tweet in tweets:
+            dataset.append(tweet.full_text)
+        #data += pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])
+        tweetCount += len(new_tweets)
+        print("Downloaded {0} tweets".format(tweetCount))
+        max_id = new_tweets[-1].id
+    except tweepy.TweepError as e:
+        print(str(e))
+        break
 
 
 pickle.dump(dataset, fw)
@@ -97,7 +97,7 @@ fd = open(inputFile, 'rb')
 dataset = pickle.load(fd)
 print(dataset)
 
-#search tweets with some keywords
+# search tweets with some keywords
 # results = api.search(hash_tag,
 #                      count=number,
 #                      since="2019-03-04",
@@ -111,10 +111,10 @@ print(dataset)
 
 # tweets = results
 # data = pd.DataFrame(data=[tweet.full_text for tweet in tweets], columns=['Tweets'])
-#data.to_csv('output.csv')
+# data.to_csv('output.csv')
 
 # print the first 10 data
-#print(data)
+# print(data)
 
 import nltk
 nltk.download('vader_lexicon')
