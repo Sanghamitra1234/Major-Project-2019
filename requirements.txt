@@ -12,7 +12,7 @@ Jinja2==2.10
 kiwisolver==1.0.1
 MarkupSafe==1.1.0
 matplotlib==3.0.2
-nltk==3.4
+nltk==3.4.5
 numpy==1.16.0
 oauthlib==3.0.1
 pandas==0.24.0
